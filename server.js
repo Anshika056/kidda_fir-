@@ -15,9 +15,12 @@ const io = require("socket.io")(http,{                        //creating a socke
 // Setting up static folder
 app.use(express.static(path.join(__dirname, 'public')));
 
-// app.get("/", function(req, res) {
-//     res.sendFile(__dirname + "/index.html");
-// });
+
+io.on("connection",(socket)=>{
+  console.log("user connected !");
+})
+
+
 
 
 http.listen(port,function() {

@@ -2,8 +2,8 @@ const users=[]
 
 // add user in the room
 const userjoin = ({id,username,room})=>{
-      username = username.trim().toLowerCase();
-      room = username.trim().toLowerCase();
+    //   username = username.trim().toLowerCase();
+    //   room = room.trim().toLowerCase();
 
     const exists = users.find((user)=> user.room === room && user.name === username)
     if(exists){
@@ -17,14 +17,12 @@ const userjoin = ({id,username,room})=>{
 }
 
 //get user
-const getuser = ({id})=>{
-    return users.find((user)=>{
-        user.id === id
-    })
-}
+function getuser(id){
+    return users.find(user =>user.id===id);
+};
 
 //get all users in room
-const getuserbyroom = ({room})=>{
+const getuserbyroom =(room)=>{
     return users.filter(user=> user.room === room);
 }
 

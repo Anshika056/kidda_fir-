@@ -12,7 +12,7 @@ const io = require("socket.io")(http,{                        //creating a socke
     }
 });
 
-// Setting up static floder
+// Setting up static folder
 app.use(express.static(path.join(__dirname, 'public')));
 
 // app.get("/", function(req, res) {

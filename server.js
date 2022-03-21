@@ -45,6 +45,30 @@ io.on("connection",(socket)=>{
           users: getuserbyroom(user.room)
         })
   })
+ 
+  //user disconnect
+  socket.on("disconnect",()=>{
+    const user = removeuser(socket.id);
+    console.log(user)
+
+    if(user){
+    io.to(user.room).emit('message', formatMessage(kiddabot,`${user.username} has left the room`))
+    }
+    
+    io.to(user.room).emit('roomUsers',{
+      room: user.room,
+      users: getuserbyroom(user.room)
+  });
+
+  })
+
+
+
+
+
+
+
+
   //send the chat message to the client
 socket.on("chat-messages",(msg)=>{
   //get the user for the given id
@@ -55,10 +79,6 @@ socket.on("chat-messages",(msg)=>{
   io.to(user.room).emit('message',formatMessage(user.username,msg));
 })
 })
-
-
-
-
 
 
 http.listen(port,function() {

@@ -28,7 +28,7 @@ const getuserbyroom =(room)=>{
 
 
 //remove the user
-const removeuser = ({id})=>{
+const removeuser = (id)=>{
     const deluser = users.findIndex(user=>user.id === id)
 
     if(deluser !== -1){
